@@ -51,7 +51,7 @@ Modal with controller:
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
   	zfaModal({
-        controller: ['$scope', 'zfaModalDefer', function($scope, zfaModalDefer, message) {
+        controller: ['$scope', 'zfaModalDefer', 'message', function($scope, zfaModalDefer, message) {
             $scope.message = message;
         
             $scope.ok = function() {
@@ -88,7 +88,7 @@ Define the modal with the zfaModalProvider:
 ```js
 app.config(['zfaModalProvider', function(zfaModalProvider) {
   zfaModalProvider('myModal', {
-        controller: ['$scope', function($scope, message) {
+        controller: ['$scope', 'message', function($scope, message) {
             $scope.message = message;
         }],
         template: '<div zf-modal="" class="tiny dialog"><h4>{{message}}</h4><a class="close-button" zf-close="">×</a>' +
@@ -116,7 +116,6 @@ Overwrite locals:
 
 ```js
 app.controller('Controller', function($scope, zfaModal) {
-  //overwrite locals value
   $scope.showModal = function() {
   	zfaModal.myModal({ message: "Bye!" })
         .then(function() { /* ... */ })
@@ -149,7 +148,7 @@ locals:
 ##### Confirm
 
 ```js
-zfaModal.confirm({ message: "Are You ready?" })
+zfaModal.confirm({ message: "Confirm?" })
     .then(function() { /* ... */ })
     .catch(function() { /* ... */ });
 ```
