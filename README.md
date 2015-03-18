@@ -37,7 +37,7 @@ app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
   	zfaModal({
         template: '<div zf-modal=""><a class="close-button" zf-close="">×</a><h4>Hello!</h4>' +
-            '<a ng-click="resolve()" class="button primary">OK/a><a ng-click="reject()" class="button secondary">Cancel</a></div>'
+            '<a ng-click="resolve()" class="button primary">OK</a><a ng-click="reject()" class="button secondary">Cancel</a></div>'
     })
         .then(function() { /* ... */ })
         .catch(function() { /* ... */ });
@@ -62,8 +62,8 @@ app.controller('Controller', function($scope, zfaModal) {
                 zfaModalDefer.reject();
             };
         }],
-        template: '<div zf-modal="" class="tiny dialog"><h4>{{message}}</h4><a class="close-button" zf-close="">×</a>' +
-            '<a ng-click="ok()" class="button primary">OK/a><a ng-click="cancel()" class="button secondary">Cancel</a></div>',
+        template: '<div zf-modal=""><h4>{{message}}</h4><a class="close-button" zf-close="">×</a>' +
+            '<a ng-click="ok()" class="button primary">OK</a><a ng-click="cancel()" class="button secondary">Cancel</a></div>',
         locals: {
             message: 'Hello!'
         }
@@ -91,8 +91,8 @@ app.config(['zfaModalProvider', function(zfaModalProvider) {
         controller: ['$scope', 'message', function($scope, message) {
             $scope.message = message;
         }],
-        template: '<div zf-modal="" class="tiny dialog"><h4>{{message}}</h4><a class="close-button" zf-close="">×</a>' +
-            '<a ng-click="resolve()" class="button primary">OK/a><a ng-click="reject()" class="button secondary">Cancel</a></div>',
+        template: '<div zf-modal=""><h4>{{message}}</h4><a class="close-button" zf-close="">×</a>' +
+            '<a ng-click="resolve()" class="button primary">OK</a><a ng-click="reject()" class="button secondary">Cancel</a></div>',
         locals: {
             message: 'Hello!'
         }
