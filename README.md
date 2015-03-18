@@ -1,7 +1,7 @@
 foundation-apps-modal
 =====================
 
-Zurb [Foundation-apps](http://foundation.zurb.com/apps/) modal with angular promises.
+[Zurb Foundation-apps modal](http://foundation.zurb.com/apps/docs/#!/modal) with angular promises.
 
 1. [Install](#install)
 2. [Usage](#usage)
@@ -39,7 +39,7 @@ app.controller('Controller', function($scope, zfaModal) {
         template: '<div zf-modal=""><a class="close-button" zf-close="">×</a><h4>Hello!</h4>' +
             '<a ng-click="resolve()" class="button primary">OK/a><a ng-click="reject()" class="button secondary">Cancel</a></div>'
     })
-        .then(function(value) { /* ... */ })
+        .then(function() { /* ... */ })
         .catch(function() { /* ... */ });
   };
 });
@@ -68,7 +68,7 @@ app.controller('Controller', function($scope, zfaModal) {
             message: 'Hello!'
         }
     })
-        .then(function(value) { /* ... */ })
+        .then(function() { /* ... */ })
         .catch(function() { /* ... */ });
   };
 });
@@ -106,7 +106,7 @@ Then call modal from controller:
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
   	zfaModal.myModal()
-        .then(function(value) { /* ... */ })
+        .then(function() { /* ... */ })
         .catch(function() { /* ... */ });
   };
 });
@@ -119,7 +119,7 @@ app.controller('Controller', function($scope, zfaModal) {
   //overwrite locals value
   $scope.showModal = function() {
   	zfaModal.myModal({ message: "Bye!" })
-        .then(function(value) { /* ... */ })
+        .then(function() { /* ... */ })
         .catch(function() { /* ... */ });
   };
 });
