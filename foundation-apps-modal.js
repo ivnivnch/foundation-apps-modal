@@ -146,7 +146,7 @@
         }])
         .config(['zfaModalProvider', function(zfaModalProvider) {
             zfaModalProvider('prompt', {
-                controller: ['$scope', 'ok', 'cancel', 'message', function($scope, ok, cancel, message, value) {
+                controller: ['$scope', 'ok', 'cancel', 'message', 'value', function($scope, ok, cancel, message, value) {
                     $scope.ok = ok;
                     $scope.cancel = cancel;
                     $scope.message = message;
