@@ -26,7 +26,6 @@
 
                 function modalFactory(config) {
                     config = angular.extend({}, config);
-                    if (!config.locals || typeof config.locals != 'object') config.locals = {};
 
                     var defer = $q.defer();
 
@@ -40,8 +39,10 @@
                                 defer.resolve(response.data);
                             });
                         }
+                    } else if (config.template) {
+                        defer.resolve(config.template);
                     } else {
-                        defer.resolve(config.template || "");
+                        throw new Error("zfaModal: template should be defined");
                     }
 
                     return defer.promise
@@ -68,15 +69,7 @@
                             var container = angular.element(config.container || $window.document.body) ;
                             container.append(element);
 
-                            var locals = angular.extend({}, config.locals);
-
-                            var scope;
-
-                            if (locals.$scope instanceof $rootScope.constructor) {
-                                scope = locals.$scope;
-                            } else {
-                                scope = $rootScope.$new();
-                            }
+                            var scope = $rootScope.$new();
 
                             scope.active = true;
                             scope.resolve = defer.resolve.bind(defer);
@@ -85,7 +78,7 @@
                             $compile(element)(scope);
 
                             if (config.controller) {
-                                $controller(config.controller, angular.extend(locals, { $scope: scope, zfaModalDefer: defer }));
+                                $controller(config.controller, angular.extend({}, config.locals, { $scope: scope, zfaModalDefer: defer }));
                             }
 
                             FoundationApi.publish(id, 'show');
@@ -99,9 +92,8 @@
                                         defer.reject(msg);
 
                                         $timeout(function() {
-                                            if (config.locals && config.locals.scope) delete scope.active;
-                                            else scope.$destroy();
                                             element.remove();
+                                            scope.$destroy();
                                         }, 3000);
 
                                         FoundationApi.unsubscribe(id);
