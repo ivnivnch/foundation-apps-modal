@@ -70,7 +70,6 @@
                             container.append(element);
 
                             var scope = $rootScope.$new();
-
                             scope.active = true;
                             scope.resolve = defer.resolve.bind(defer);
                             scope.reject = defer.reject.bind(defer);
