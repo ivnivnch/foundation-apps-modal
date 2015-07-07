@@ -1,5 +1,5 @@
 foundation-apps-modal
-=====================
+======================
 
 [Zurb Foundation-apps modal](http://foundation.zurb.com/apps/docs/#!/modal) with angular promises.
 
