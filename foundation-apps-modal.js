@@ -27,11 +27,13 @@
                 function modalFactory(config) {
                     config = angular.extend({}, config);
 
-                    var defer = $q.defer();
+                    var defer = $q.defer(), template;
 
                     if(config.templateUrl) {
-                        if ($templateCache.get(config.templateUrl)) {
-                            defer.resolve($templateCache.get(config.templateUrl));
+                        template = $templateCache.get(config.templateUrl);
+
+                        if (template) {
+                            defer.resolve(Array.isArray(template) ? template[0] : template);
                         } else {
                             $http.get(config.templateUrl, {
                                 cache: $templateCache
