@@ -5,7 +5,7 @@
         .provider('zfaModal', function () {
             var configs = {};
             return {
-                setModal: function (modalId, config) {
+                register: function (modalId, config) {
                     if (typeof modalId === 'string') {
                         configs[modalId] = config;
                     }else{
