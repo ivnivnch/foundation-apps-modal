@@ -35,7 +35,7 @@ Custom modal:
 ```js
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
-  	zfaModal({
+  	zfaModal.open('',{
         template: '<div zf-modal=""><a class="close-button" zf-close="">×</a><h4>Hello!</h4>' +
             '<a ng-click="resolve()" class="button primary">OK</a><a ng-click="reject()" class="button secondary">Cancel</a></div>'
     })
@@ -50,8 +50,8 @@ Modal with controller:
 ```js
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
-  	zfaModal({
-        controller: ['$scope', 'zfaModalDefer', 'message', function($scope, zfaModalDefer, message) {
+  	zfaModal.open('',{
+        controller: ['$scope', 'zfaModalDefer', 'message', 'zfaModal', function($scope, zfaModalDefer, message, zfaModal) {
             $scope.message = message;
         
             $scope.ok = function() {
@@ -61,6 +61,11 @@ app.controller('Controller', function($scope, zfaModal) {
             $scope.cancel = function() {
                 zfaModalDefer.reject();
             };
+
+            $scope.cancel = function() {
+                zfaModal.close('');  // another way to close modal
+            };
+
         }],
         template: '<div zf-modal=""><h4>{{message}}</h4><a class="close-button" zf-close="">×</a>' +
             '<a ng-click="ok()" class="button primary">OK</a><a ng-click="cancel()" class="button secondary">Cancel</a></div>',
@@ -87,7 +92,7 @@ Define the modal with the zfaModalProvider:
 
 ```js
 app.config(['zfaModalProvider', function(zfaModalProvider) {
-  zfaModalProvider('myModal', {
+  zfaModalProvider.register('myModal', {
         controller: ['$scope', 'message', function($scope, message) {
             $scope.message = message;
         }],
@@ -105,7 +110,7 @@ Then call modal from controller:
 ```js
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
-  	zfaModal.myModal()
+  	zfaModal.open('myModal',{
         .then(function() { /* ... */ })
         .catch(function() { /* ... */ });
   };
@@ -117,7 +122,7 @@ Overwrite locals:
 ```js
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
-  	zfaModal.myModal({ message: "Bye!" })
+  	zfaModal.open('myModal',{ message: "Bye!" })
         .then(function() { /* ... */ })
         .catch(function() { /* ... */ });
   };
@@ -136,7 +141,7 @@ app.controller('Controller', function($scope, zfaModal) {
 ##### Alert
 
 ```js
-zfaModal.alert({ message: "Alert!!!" })
+zfaModal.open('alert',{ message: "Alert!!!" })
     .then(function() { /* ... */ })
     .catch(function() { /* ... */ });
 ```
@@ -148,7 +153,7 @@ locals:
 ##### Confirm
 
 ```js
-zfaModal.confirm({ message: "Confirm?" })
+zfaModal.open('confirm',{ message: "Confirm?" })
     .then(function() { /* ... */ })
     .catch(function() { /* ... */ });
 ```
@@ -161,7 +166,7 @@ locals:
 ##### Prompt
 
 ```js
-zfaModal.prompt({ message: "Type your text:" })
+zfaModal.open('prompt',{ message: "Type your text:" })
     .then(function(value) { /* ... */ })
     .catch(function() { /* ... */ });
 ```
