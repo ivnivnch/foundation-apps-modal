@@ -173,3 +173,13 @@ locals:
 * `value`: Input value.
 * `ok`: Ok button text.
 * `cancel`: Cancel button text.
+
+## Develop
+
+### Setup
+
+1. clone this repo
+2. `npm install`
+
+simply run `gulp` to build and open demo application on the browser at localhost:8080.
+Run `gulp build` for building the project only.
