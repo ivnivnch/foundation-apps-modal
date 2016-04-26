@@ -5,12 +5,14 @@
   "main": "foundation-apps-modal.js",
   "dependencies": {},
   "devDependencies": {
+    "angular": "^1.5.5",
     "foundation-apps": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-concat": "^2.6.0",
     "gulp-load-plugins": "^1.2.2",
     "gulp-release-easy": "^1.0.5",
+    "gulp-webserver": "^0.9.1",
     "gulp-wrap": "^0.11.0"
   },
   "scripts": {
