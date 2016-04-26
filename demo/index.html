@@ -5,9 +5,13 @@
     <title></title>
     <link rel="stylesheet" href="foundation-apps/dist/css/foundation-apps.min.css">
 </head>
-<body ng-app="demo" ng-controller="demoCtrl as vm">
+<body ng-app="demo" ng-controller="demoCtrl">
 
-    {{vm.text}}
+    <div class="align-center grid-block" style="margin-top: 1%;">
+        <div class="small-4 grid-block">
+            <a ng-repeat="modalId in idArray" class="button" href="#" ng-click="showModal(modalId)">Show {{modalId}}</a>
+        </div>
+    </div>
 
     <script src="angular/angular.js"></script>
     <script src="foundation-apps/dist/js/foundation-apps.js"></script>

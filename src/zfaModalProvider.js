@@ -1,18 +1,21 @@
 angular.module('zfaModal', ['foundation'])
     .provider('zfaModal', function () {
         var configs = {};
+
+        function register (modalId, config) {
+            if (typeof modalId === 'string') {
+                return configs[modalId] = config;
+            }else{
+                throw new Error('zfaModalProvider: modalId should be defined');
+            }
+        }
+
         return {
-            register: function (modalId, config) {
-                if (typeof modalId === 'string') {
-                    configs[modalId] = config;
-                }else{
-                    throw new Error('zfaModalProvider: modalId should be defined');
-                }
-            },
+            register: register,
             $get: function (zfaModalFactory, FoundationApi) {
                 return {
                     open: function (modalId, modalConfig) {
-                        var newConfig = configs[modalId];
+                        var newConfig = configs[modalId] || register(modalId,modalConfig);
                         newConfig.locals = angular.extend({}, newConfig.locals, modalConfig); //Overwrite old config
                         return zfaModalFactory.createModal(newConfig);
                     },

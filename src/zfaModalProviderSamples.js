@@ -9,7 +9,7 @@ angular.module('zfaModal')
                     $scope.ok = ok;
                     $scope.message = message;
                 }],
-                template: '<div zf-modal="" overlay="false" overlay-close="false" class="tiny dialog"><a class="close-button" zf-close="">×</a><h4>{{message}}</h4><a class="button primary" ng-click="resolve()">{{ok}}</a></div>',
+                template: '<div zf-modal="" overlay="true" overlay-close="true" class="tiny dialog"><a class="close-button" zf-close="">x</a><h4>{{message}}</h4><a class="button primary" ng-click="resolve()">{{ok}}</a></div>',
                 locals: {
                     ok: "OK",
                     message: ""
@@ -24,7 +24,7 @@ angular.module('zfaModal')
                     $scope.cancel = cancel;
                     $scope.message = message;
                 }],
-                template: '<div zf-modal="" overlay="false" overlay-close="false" class="tiny dialog"><a class="close-button" zf-close="">×</a><h4>{{message}}</h4><a class="button primary" ng-click="resolve()">{{ok}}</a><a class="button secondary" ng-click="reject()">{{cancel}}</a></div>',
+                template: '<div zf-modal="" overlay="true" overlay-close="true" class="tiny dialog"><a class="close-button" zf-close="">x</a><h4>{{message}}</h4><a class="button primary" ng-click="resolve()">{{ok}}</a><a class="button secondary" ng-click="reject()">{{cancel}}</a></div>',
                 locals: {
                     ok: "OK",
                     cancel: "Cancel",
@@ -41,7 +41,7 @@ angular.module('zfaModal')
                     $scope.message = message;
                     $scope.value = value;
                 }],
-                template: '<div zf-modal="" overlay="false" overlay-close="false" class="tiny dialog"><a class="close-button" zf-close="">×</a><h4>{{message}}</h4><label><input type="text" ng-model="value"></label><a class="button primary" ng-click="resolve(value)">{{ok}}</a><a class="button secondary" ng-click="reject()">{{cancel}}</a></div>',
+                template: '<div zf-modal="" overlay="true" overlay-close="true" class="tiny dialog"><a class="close-button" zf-close="">x</a><h4>{{message}}</h4><label><input type="text" ng-model="value"></label><a class="button primary" ng-click="resolve(value)">{{ok}}</a><a class="button secondary" ng-click="reject()">{{cancel}}</a></div>',
                 locals: {
                     ok: "OK",
                     cancel: "Cancel",

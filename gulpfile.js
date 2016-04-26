@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-gulp.task('server', function() {
-    return gulp.src(['demo','node_modules','dist'])
+gulp.task('server',['build'], function() {
+    return gulp.src(['demo','node_modules','dist','node_modules/foundation-apps/js/angular/'])
         .pipe($.webserver({
             port: 8080,
             livereload: true,
