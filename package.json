@@ -1,6 +1,6 @@
 {
   "name": "foundation-apps-modal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Zurb Foundation-apps modal with angular promises.",
   "main": "dist/foundation-apps-modal.js",
   "dependencies": {},
