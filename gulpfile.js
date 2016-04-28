@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+require('gulp-release-easy')(gulp);
 
 gulp.task('server',['build'], function() {
     return gulp.src(['demo','node_modules','dist',
