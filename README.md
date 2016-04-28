@@ -35,7 +35,7 @@ Custom modal:
 ```js
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
-  	zfaModal.open('',{
+  	zfaModal.open('myModal',{
         template: '<div zf-modal=""><a class="close-button" zf-close="">×</a><h4>Hello!</h4>' +
             '<a ng-click="resolve()" class="button primary">OK</a><a ng-click="reject()" class="button secondary">Cancel</a></div>'
     })
@@ -50,7 +50,7 @@ Modal with controller:
 ```js
 app.controller('Controller', function($scope, zfaModal) {
   $scope.showModal = function() {
-  	zfaModal.open('',{
+  	zfaModal.open('myModal',{
         controller: ['$scope', 'zfaModalDefer', 'message', 'zfaModal', function($scope, zfaModalDefer, message, zfaModal) {
             $scope.message = message;
         
@@ -60,10 +60,7 @@ app.controller('Controller', function($scope, zfaModal) {
             
             $scope.cancel = function() {
                 zfaModalDefer.reject();
-            };
-
-            $scope.cancel = function() {
-                zfaModal.close('');  // another way to close modal
+                // zfaModal.close('myModal');  // another way to close modal, using its id
             };
 
         }],
@@ -176,3 +173,13 @@ locals:
 * `value`: Input value.
 * `ok`: Ok button text.
 * `cancel`: Cancel button text.
+
+## Develop
+
+### Setup
+
+1. clone this repo
+2. `npm install`
+
+simply run `gulp` to build and open demo application on the browser at localhost:8080.
+Run `gulp build` for building the project only.
