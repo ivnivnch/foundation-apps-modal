@@ -4,6 +4,7 @@ angular.module('zfaModal', ['foundation'])
 
         function register (modalId, config) {
             if (typeof modalId === 'string') {
+                config.id = modalId;
                 return configs[modalId] = config;
             }else{
                 throw new Error('zfaModalProvider: modalId should be defined');
