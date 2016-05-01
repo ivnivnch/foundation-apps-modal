@@ -1,0 +1,31 @@
+{
+  "name": "foundation-apps-modal",
+  "version": "0.1.2",
+  "description": "Zurb Foundation-apps modal with angular promises.",
+  "main": "dist/foundation-apps-modal.js",
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "^1.5.5",
+    "foundation-apps": "^1.2.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-load-plugins": "^1.2.2",
+    "gulp-release-easy": "^1.0.5",
+    "gulp-webserver": "^0.9.1",
+    "gulp-wrap": "^0.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinhnghi223/foundation-apps-modal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinhnghi223/foundation-apps-modal/issues"
+  },
+  "homepage": "https://github.com/vinhnghi223/foundation-apps-modal#readme"
+}

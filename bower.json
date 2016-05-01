@@ -3,16 +3,19 @@
   "version": "0.1.1",
   "homepage": "https://github.com/mmiii/foundation-apps-modal",
   "authors": [
-    "mmiii (github.com/mmiii)"
+    "mmiii (github.com/mmiii)",
+    "Nghi Le (https://github.com/vinhnghi223/)",
+    "Michael (https://github.com/Miklecc)"
   ],
   "description": "Zurb Foundation-apps modal with angular promises.",
-  "main": "foundation-apps-modal.js",
+  "main": "dist/foundation-apps-modal.js",
   "keywords": [
     "angular",
     "zurb",
     "foundation",
     "apps",
-    "modal"
+    "modal",
+    "promise"
   ],
   "license": "MIT",
   "ignore": [
