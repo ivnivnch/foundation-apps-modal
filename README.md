@@ -8,10 +8,14 @@ foundation-apps-modal
 
 ## Install
 
-Install with Bower:
-
 ```
 bower install foundation-apps-modal
+```
+
+Or
+
+```
+npm install foundation-apps-modal --save -dev
 ```
 
 Reference the script:
