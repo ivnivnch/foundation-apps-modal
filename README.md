@@ -15,13 +15,19 @@ bower install foundation-apps-modal
 Or
 
 ```
-npm install foundation-apps-modal --save -dev
+npm install foundation-apps-modal --save-dev
 ```
 
 Reference the script:
 
 ```html
-<script src="bower_components\foundation-apps-modal\foundation-apps-modal.js"></script>
+<script src="bower_components\foundation-apps-modal\dist\foundation-apps-modal.js"></script>
+```
+
+Or
+
+```html
+<script src="node_modules\foundation-apps-modal\dist\foundation-apps-modal.js"></script>
 ```
 
 Add the module zfaModal as a dependency to your application:
@@ -29,6 +35,8 @@ Add the module zfaModal as a dependency to your application:
 ```js
 var app = angular.module('myapp', ['zfaModal']);
 ```
+
+Notice that if your app only depends on some foundations app modules but not the entire foundations app framework, use `foundation-apps-modal.standalone.js` isntead.
 
 ## Usage
 

@@ -13,9 +13,15 @@ gulp.task('server', ['build'], function () {
 });
 
 gulp.task('build', function () {
-    return gulp.src(['src/**/*.js'])
-        .pipe($.angularFilesort())
-        .pipe($.concat('foundation-apps-modal.js'))
+    var buildStream = gulp.src(['src/**/*.js'])
+        .pipe($.angularFilesort());
+
+    buildStream.pipe($.concat('foundation-apps-modal.js'))
+        .pipe($.wrap('\'use strict\';\n\n<%= contents %>\n\n'))
+        .pipe(gulp.dest('dist'));
+
+    return buildStream.pipe($.concat('foundation-apps-modal.standalone.js'))
+        .pipe($.replace('[foundation]', '[]'))
         .pipe($.wrap('\'use strict\';\n\n<%= contents %>\n\n'))
         .pipe(gulp.dest('dist'));
 });

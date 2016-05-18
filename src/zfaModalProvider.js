@@ -1,4 +1,4 @@
-angular.module('zfaModal', ['foundation'])
+angular.module('zfaModal',[])
     .provider('zfaModal', function () {
         var configs = {};
 
