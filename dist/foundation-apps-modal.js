@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zfaModal',[])
+angular.module('zfaModal',['foundation'])
     .provider('zfaModal', function () {
         var configs = {};
 
