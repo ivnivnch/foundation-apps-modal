@@ -7,15 +7,18 @@ demoApp.controller('demoCtrl', function ($scope, zfaModal) {
 
     $scope.idArray = ['myModal','alert','confirm','prompt'];
 
+    $scope.promiseResult = "";
+
     $scope.showModal = function(id) {
 
         switch(id) {
             case 'myModal':
                 zfaModal.open('myModal',{
                     template: '<div zf-modal=""><a class="close-button" zf-close="">X</a><h4>Hello!</h4>' +
-                    '<a ng-click="resolve()" class="button primary">OK</a><a ng-click="reject()" class="button secondary">Cancel</a></div>'
+                    '<a ng-click="resolve()" class="button primary">OK</a><a ng-click="cancel()" class="button secondary">Cancel</a></div>',
+                    controller: 'demoCtrl'
                 })
-                    .then(function() { /* ... */ })
+                    .then(function() {  /* ... */ })
                     .catch(function() { /* ... */ });
                 break;
             case 'alert':
@@ -36,6 +39,13 @@ demoApp.controller('demoCtrl', function ($scope, zfaModal) {
             default:
 
         }
-
     };
+
+    $scope.cancel = function() {
+        zfaModal.close('myModal');
+        $scope.$emit('event', "CANCELED"); //TODO to fix displaying at the main page
+    };
+
+    $scope.$on('event', function(event, data) { $scope.promiseResult = data; });
+
 });
