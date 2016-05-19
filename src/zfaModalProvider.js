@@ -1,9 +1,10 @@
-angular.module('zfaModal', ['foundation'])
+angular.module('zfaModal',['foundation'])
     .provider('zfaModal', function () {
         var configs = {};
 
         function register (modalId, config) {
             if (typeof modalId === 'string') {
+                config.id = modalId;
                 return configs[modalId] = config;
             }else{
                 throw new Error('zfaModalProvider: modalId should be defined');
