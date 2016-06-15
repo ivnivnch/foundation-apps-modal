@@ -17,6 +17,7 @@ gulp.task('build', function () {
     gulp.src(['src/**/*.js'])
         .pipe($.angularFilesort())
         .pipe($.concat('foundation-apps-modal.js'))
+        .pipe($.ngAnnotate())
         .pipe($.wrap('\'use strict\';\n\n<%= contents %>\n\n'))
         .pipe(gulp.dest('dist'));
 
