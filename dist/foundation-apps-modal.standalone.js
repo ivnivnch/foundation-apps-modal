@@ -15,7 +15,7 @@ angular.module('zfaModal',[])
 
         return {
             register: register,
-            $get: function (zfaModalFactory, FoundationApi) {
+            $get: ["zfaModalFactory", "FoundationApi", function (zfaModalFactory, FoundationApi) {
                 return {
                     open: function (modalId, modalConfig) {
                         var newConfig = configs[modalId] || register(modalId,modalConfig);
@@ -27,7 +27,7 @@ angular.module('zfaModal',[])
                     }
                 }
 
-            }
+            }]
         }
     });
 
@@ -93,7 +93,7 @@ angular.module('zfaModal')
     }
 }]);
 angular.module('zfaModal')
-    .factory('zfaModalFactory', function(FoundationApi, $controller, $rootScope, $http, $q, $compile, $timeout, $window, $templateCache) {
+    .factory('zfaModalFactory', ["FoundationApi", "$controller", "$rootScope", "$http", "$q", "$compile", "$timeout", "$window", "$templateCache", function(FoundationApi, $controller, $rootScope, $http, $q, $compile, $timeout, $window, $templateCache) {
 
         function createModal(config) {
 
@@ -191,4 +191,4 @@ angular.module('zfaModal')
         return{
             createModal:createModal
         }
-    });
+    }]);
