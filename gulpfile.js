@@ -14,29 +14,31 @@ gulp.task('server', ['build'], function () {
 });
 
 gulp.task('build', function () {
-    var src = gulp.src(['src/**/*.js'])
+    gulp.src(['src/**/*.js'])
         .pipe($.angularFilesort())
         .pipe($.concat('foundation-apps-modal.js'))
         .pipe($.ngAnnotate())
-        .pipe($.wrap('\'use strict\';\n\n<%= contents %>\n\n'));
-
-    src.pipe(gulp.dest('dist'));
-
-    src.pipe($.uglify())
-        .pipe($.rename('foundation-apps-modal.min.js'))
+        .pipe($.wrap('\'use strict\';\n\n<%= contents %>\n\n'))
         .pipe(gulp.dest('dist'));
 
-    var standAlone = gulp.src(['dist/foundation-apps-modal.js'])
+    return gulp.src(['dist/foundation-apps-modal.js'])
         .pipe($.rename('foundation-apps-modal.standalone.js'))
-        .pipe($.replace('[\'foundation\']', '[]'));
+        .pipe($.replace('[\'foundation\']', '[]'))
+        .pipe(gulp.dest('dist'));
+});
 
-    standAlone.pipe(gulp.dest('dist'));
+gulp.task('build-min',['build'], function () {
+    gulp.src(['dist/foundation-apps-modal.js'])
+        .pipe($.rename('foundation-apps-modal.min.js'))
+        .pipe($.uglify())
+        .pipe(gulp.dest('dist'));
 
-    return standAlone.pipe($.uglify())
+    return gulp.src(['dist/foundation-apps-modal.standalone.js'])
         .pipe($.rename('foundation-apps-modal.standalone.min.js'))
+        .pipe($.uglify())
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', ['server'], function () {
-    gulp.watch('src/**/*.js', ['build']);
+    gulp.watch('src/**/*.js', ['build-min']);
 });
