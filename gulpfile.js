@@ -14,16 +14,26 @@ gulp.task('server', ['build'], function () {
 });
 
 gulp.task('build', function () {
-    gulp.src(['src/**/*.js'])
+    var src = gulp.src(['src/**/*.js'])
         .pipe($.angularFilesort())
         .pipe($.concat('foundation-apps-modal.js'))
         .pipe($.ngAnnotate())
-        .pipe($.wrap('\'use strict\';\n\n<%= contents %>\n\n'))
+        .pipe($.wrap('\'use strict\';\n\n<%= contents %>\n\n'));
+
+    src.pipe(gulp.dest('dist'));
+
+    src.pipe($.uglify())
+        .pipe($.rename('foundation-apps-modal.min.js'))
         .pipe(gulp.dest('dist'));
 
-    return gulp.src(['dist/foundation-apps-modal.js'])
+    var standAlone = gulp.src(['dist/foundation-apps-modal.js'])
         .pipe($.rename('foundation-apps-modal.standalone.js'))
-        .pipe($.replace('[\'foundation\']', '[]'))
+        .pipe($.replace('[\'foundation\']', '[]'));
+
+    standAlone.pipe(gulp.dest('dist'));
+
+    return standAlone.pipe($.uglify())
+        .pipe($.rename('foundation-apps-modal.standalone.min.js'))
         .pipe(gulp.dest('dist'));
 });
 
